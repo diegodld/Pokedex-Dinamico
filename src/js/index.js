@@ -157,11 +157,11 @@ var arrayCartoes = [
 
 //Esta função gera todos os cards dinamicamente de acordo com os dados obtidos do array de pokemons
 function createCards() {
-  for (let i = 0; i < arrayCartoes.length; i++) {
+  arrayCartoes.forEach((card) => {
     const cartoesPokemon = document.querySelector(".cartoes-pokemon");
     const divCartao = document.createElement("div");
-    divCartao.setAttribute("class", arrayCartoes[i].DivClass);
-    divCartao.setAttribute("id", arrayCartoes[i].DivId);
+    divCartao.setAttribute("class", card.DivClass);
+    divCartao.setAttribute("id", card.DivId);
     cartoesPokemon.appendChild(divCartao);
 
     const divCartaoTopo = document.createElement("div");
@@ -174,14 +174,14 @@ function createCards() {
 
     const nome = document.createElement("h2");
     nome.setAttribute("class", "nome");
-    nome.textContent = arrayCartoes[i].nome;
+    nome.textContent = card.nome;
 
     const span = document.createElement("span");
-    span.textContent = arrayCartoes[i].id;
+    span.textContent = card.id;
 
     const spanTipo = document.createElement("span");
     spanTipo.setAttribute("class", "tipo");
-    spanTipo.textContent = arrayCartoes[i].tipo;
+    spanTipo.textContent = card.tipo;
 
     divDetalhes.appendChild(nome);
     divDetalhes.appendChild(span);
@@ -191,8 +191,8 @@ function createCards() {
     divImg.setAttribute("class", "cartao-imagem");
 
     const img = document.createElement("img");
-    img.src = arrayCartoes[i].img.src;
-    img.alt = arrayCartoes[i].img.alt;
+    img.src = card.img.src;
+    img.alt = card.img.alt;
 
     divImg.appendChild(img);
 
@@ -215,11 +215,11 @@ function createCards() {
     divStatus.appendChild(ul);
 
     let status = [
-      `HP: ${arrayCartoes[i].status.hp}`,
-      `Ataque: ${arrayCartoes[i].status.ataque}`,
-      `Defesa: ${arrayCartoes[i].status.defesa}`,
-      `Velocidade: ${arrayCartoes[i].status.velocidade} `,
-      `Total: ${arrayCartoes[i].status.total()}`,
+      `HP: ${card.status.hp}`,
+      `Ataque: ${card.status.ataque}`,
+      `Defesa: ${card.status.defesa}`,
+      `Velocidade: ${card.status.velocidade} `,
+      `Total: ${card.status.total()}`,
     ];
 
     status.forEach((stts) => {
@@ -241,8 +241,8 @@ function createCards() {
     divHabilidade.appendChild(ulHb);
 
     const habilidade = [
-      `${arrayCartoes[i].habilidades.habilidade1}`,
-      `${arrayCartoes[i].habilidades.habilidade2}`,
+      `${card.habilidades.habilidade1}`,
+      `${card.habilidades.habilidade2}`,
     ];
 
     habilidade.forEach((hb) => {
@@ -251,5 +251,5 @@ function createCards() {
 
       ulHb.appendChild(lihb);
     });
-  }
+  });
 }
